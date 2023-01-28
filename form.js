@@ -21,9 +21,41 @@ var list = [
     {'color': 'green', 'latitude': 41.826835+0.001, 'longitude': -71.399710},
 ]
 
+/**
+ * 
+ * @param {p} url 
+ * @return 
+ */
+function parseURL(url){
+    let entities = [];
+    var entities_url = url.split("=")[1];
+    var lat_lon_list = entities_url.split(",");
+    for (const lat_lon_str of lat_lon_list){
+        lat_lon = lat_lon_str.split('_');
+        lat = parseFloat(lat_lon[0]);
+        lon = parseFloat(lat_lon[1]);
+        console.log(`(${lat}, ${lon})`);
+        entities.push({'lat': lat, 'lon': lon});
+    }
+    return entities;
+}
+
+let colors = [
+    'blue',
+    'red',
+    'green',
+    'yellow',
+]
+
 window.onload = () => {
-    for (let i=0; i < list.length; i++){
-        createEntity(list[i].color, list[i].latitude, list[i].longitude);
+
+    // Retrieve list of latitude and longitude
+    var entities = parseURL(window.location.search);
+
+    for (const entity of entities){
+        let color = Math.floor(Math.random() * colors.length);
+        createEntity(color, entity.lat, entity.lon);
+        // createEntity(list[i].color, list[i].latitude, list[i].longitude);
     }
 };
 
