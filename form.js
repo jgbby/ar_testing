@@ -45,6 +45,10 @@ let colors = [
     'red',
     'green',
     'yellow',
+    'orange',
+    'purple',
+    'white',
+    'brown'
 ]
 
 window.onload = () => {
