@@ -1,3 +1,5 @@
+
+/*
 const params = window.location.search
 const urlParams = new URLSearchParams(params);
 
@@ -20,11 +22,40 @@ var list = [
     {'color': 'blue', 'latitude': 41.826835, 'longitude': -71.399710},
     {'color': 'green', 'latitude': 41.826835+0.001, 'longitude': -71.399710},
 ]
+*/
+
+let colors = [
+    'blue',
+    'red',
+    'green',
+    'yellow',
+    'orange',
+    'purple',
+    'white',
+    'brown'
+]
+
+// When the A-Frame loads add the given entities specified in the URL
+window.onload = () => {
+
+    // Retrieve list of latitude and longitude
+    var entities = parseURL(window.location.search);
+
+    // Render all entities with random colors
+    for (const entity of entities){
+        let color_index = Math.floor(Math.random() * colors.length);
+        createEntity(colors[color_index], entity.lat, entity.lon);
+    }
+};
 
 /**
+ * Parses the given URL into latitude and longitude pairs 
+ * @param {String} url the url formatted as .../?entities=lat_lon,lat_lon,...,lat_lon 
+ * @return {List[Dictionary]} a list of {'lat': lat, 'lon', lon} pairs 
  * 
- * @param {p} url 
- * @return 
+ * For example:
+ *  http://.../?entities=41.826835_-71.399710,41.827835_-71.399710
+ *  becomes [{'lat': 41.826835, 'lon': -71.399710}, {'lat': 41.827835, 'lon': -71.399710}]
  */
 function parseURL(url){
     let entities = [];
@@ -40,29 +71,12 @@ function parseURL(url){
     return entities;
 }
 
-let colors = [
-    'blue',
-    'red',
-    'green',
-    'yellow',
-    'orange',
-    'purple',
-    'white',
-    'brown'
-]
-
-window.onload = () => {
-
-    // Retrieve list of latitude and longitude
-    var entities = parseURL(window.location.search);
-
-    for (const entity of entities){
-        let color_index = Math.floor(Math.random() * colors.length);
-        createEntity(colors[color_index], entity.lat, entity.lon);
-        // createEntity(list[i].color, list[i].latitude, list[i].longitude);
-    }
-};
-
+/**
+ * Creates and adds the given AR entity of color at the latitude and longitude 
+ * @param {String} color 
+ * @param {Float} latitude 
+ * @param {Float} longitude 
+ */
 function createEntity(color, latitude, longitude){
 
     let testEntityAdded = false;
@@ -84,8 +98,11 @@ function createEntity(color, latitude, longitude){
     testEntityAdded = true;
 }
 
-
-function createLocalEntity(color, latitude, longitude){
+/**
+ * Creates and adds the given AR entity of color in front of the user's camera
+ * @param {*} color 
+ */
+function createLocalEntity(color){
 
     let testEntityAdded = false;
     const el = document.querySelector("[gps-new-camera]");
@@ -100,7 +117,7 @@ function createLocalEntity(color, latitude, longitude){
                 y: 20,
                 z: 20
             });
-            entity.setAttribute('material', { color: 'red' } );
+            entity.setAttribute('material', { color: color } );
             entity.setAttribute('gps-new-entity-place', {
                 latitude: e.detail.position.latitude + 0.001,
                 longitude: e.detail.position.longitude
@@ -109,11 +126,6 @@ function createLocalEntity(color, latitude, longitude){
         }
         testEntityAdded = true;
     });
-}
-
-function addEntity(entity){
-    const ascene = document.querySelector('a-scene');
-    ascene.innerHTML += entity;
 }
 
 function validateColor(color){
