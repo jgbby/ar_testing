@@ -14,8 +14,9 @@ for (const value of values) console.log(value);
 
 for(const entry of entries) {
     console.log(`${entry[0]}: ${entry[1]}`);
-    addEntity(createEntity('red', '41.826835', '-71.399710'))
 }
+
+addEntity(createEntity('red', '41.826835', '-71.399710'))
 
 function createEntity(color, latitude, longitude){
     let entity = `<a-entity material='color: ` + color + `' geometry='primitive: box' gps-new-entity-place="latitude: ` + latitude + `; longitude: ` + longitude + `" scale="5 5 5"></a-entity>`
