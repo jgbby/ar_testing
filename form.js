@@ -25,7 +25,7 @@ function createEntity(color, latitude, longitude){
 
 function addEntity(entity){
     const ascene = document.querySelector('a-scene');
-    ascene.append(entity);
+    ascene.innerHTML += entity;
 }
 
 function validateColor(color){
