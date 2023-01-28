@@ -121,7 +121,7 @@ function createLocalText(message){
             });
             entity.setAttribute('value', message);
             entity.setAttribute('gps-new-entity-place', {
-                latitude: e.detail.position.latitude + 0.001,
+                latitude: e.detail.position.latitude + 0.0001,
                 longitude: e.detail.position.longitude
             });
             document.querySelector("a-scene").appendChild(entity);
