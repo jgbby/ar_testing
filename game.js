@@ -115,9 +115,9 @@ function createLocalText(message){
             // Add a box to the north of the initial GPS position
             const entity = document.createElement("a-text");
             entity.setAttribute("scale", {
-                x: 10, 
-                y: 10,
-                z: 10 
+                x: 5, 
+                y: 5,
+                z: 5 
             });
             entity.setAttribute('value', message);
             entity.setAttribute('gps-new-entity-place', {
