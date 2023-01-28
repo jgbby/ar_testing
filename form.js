@@ -53,8 +53,8 @@ window.onload = () => {
     var entities = parseURL(window.location.search);
 
     for (const entity of entities){
-        let color = Math.floor(Math.random() * colors.length);
-        createEntity(color, entity.lat, entity.lon);
+        let color_index = Math.floor(Math.random() * colors.length);
+        createEntity(colors[color_index], entity.lat, entity.lon);
         // createEntity(list[i].color, list[i].latitude, list[i].longitude);
     }
 };
