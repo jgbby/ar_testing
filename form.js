@@ -16,9 +16,15 @@ for(const entry of entries) {
     console.log(`${entry[0]}: ${entry[1]}`);
 }
 
+var list = [ 
+    {'color': 'blue', 'latitude': 41.826835, 'longitude': -71.399710},
+    {'color': 'green', 'latitude': 41.826835+0.001, 'longitude': -71.399710},
+]
 
 window.onload = () => {
-    createEntity('blue', 41.826835, -71.399710);
+    for (int i=0; i < list.length; i++){
+        createEntity(list[i].color, list[i].latitude, list[i].longitude);
+    }
 };
 
 function createEntity(color, latitude, longitude){
