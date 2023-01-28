@@ -22,7 +22,7 @@ var list = [
 ]
 
 window.onload = () => {
-    for (int i=0; i < list.length; i++){
+    for (let i=0; i < list.length; i++){
         createEntity(list[i].color, list[i].latitude, list[i].longitude);
     }
 };
