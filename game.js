@@ -115,13 +115,13 @@ function createLocalText(message){
             // Add a box to the north of the initial GPS position
             const entity = document.createElement("a-text");
             entity.setAttribute("scale", {
-                x: 30, 
-                y: 30,
-                z: 30 
+                x: 10, 
+                y: 10,
+                z: 10 
             });
             entity.setAttribute('value', message);
             entity.setAttribute('gps-new-entity-place', {
-                latitude: e.detail.position.latitude + 0.0008,
+                latitude: e.detail.position.latitude,
                 longitude: e.detail.position.longitude
             });
             document.querySelector("a-scene").appendChild(entity);
