@@ -38,6 +38,8 @@ let colors = [
 // When the A-Frame loads add the given entities specified in the URL
 window.onload = () => {
 
+    createLocalText("Welcome to ScavengerAR! This is an AR-based in-real-life scavenger hunt. The color of your screen tells you how hot or cold you are to the landmarks!")
+
     // Retrieve list of latitude and longitude
     var entities = parseURL(window.location.search);
 
@@ -102,7 +104,37 @@ function createEntity(color, latitude, longitude){
  * Creates and adds the given AR entity of color in front of the user's camera
  * @param {*} color 
  */
-function createLocalEntity(color){
+function createLocalText(message){
+
+    let testEntityAdded = false;
+    const el = document.querySelector("[gps-new-camera]");
+
+    el.addEventListener("gps-camera-update-position", e => {
+        if(!testEntityAdded) {
+            alert(`Got first GPS position: lon ${e.detail.position.longitude} lat ${e.detail.position.latitude}`);
+            // Add a box to the north of the initial GPS position
+            const entity = document.createElement("a-text");
+            entity.setAttribute("scale", {
+                x: 5, 
+                y: 5,
+                z: 5
+            });
+            entity.setAttribute('value', message);
+            entity.setAttribute('gps-new-entity-place', {
+                latitude: e.detail.position.latitude + 0.001,
+                longitude: e.detail.position.longitude
+            });
+            document.querySelector("a-scene").appendChild(entity);
+        }
+        testEntityAdded = true;
+    });
+}
+
+/**
+ * Creates and adds the given AR entity of color in front of the user's camera
+ * @param {*} color 
+ */
+function createLocalBox(color){
 
     let testEntityAdded = false;
     const el = document.querySelector("[gps-new-camera]");
