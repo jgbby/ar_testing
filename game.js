@@ -41,7 +41,7 @@ function createBlock(){
         y: 3,
         z: 3 
     });
-    entity.setAttribute('material', { color: color } );
+    entity.setAttribute('material', { color: 'red' } );
     document.querySelector("a-scene").appendChild(entity);   
 }
 
