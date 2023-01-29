@@ -29,9 +29,9 @@ function createText(message){
     const text = document.createElement("a-text");
     text.setAttribute("position", {
         x : 0,
-        y : 2,
-        z : 4 
-    } );
+        y : 0,  // 0 2 4 
+        z : 0 
+    });
     text.setAttribute("scale", {
         x: 15, 
         y: 15,
