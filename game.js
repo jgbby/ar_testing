@@ -27,7 +27,6 @@ window.onload = () => {
 
 function createText(message){
     const text = document.createElement("a-text");
-    text.setAttribute('', { color: 'red' } );
     text.setAttribute("position", {
         x : 0,
         y : 2,
