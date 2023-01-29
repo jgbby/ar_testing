@@ -30,19 +30,7 @@ window.onload = () => {
 
 function createComp(){
 
-    const box = document.createElement("a-box");
-    box.setAttribute("scale", {
-        x: 20,
-        y: 20,
-        z: 20
-    });
-    box.setAttribute('material', { color: 'red' } );
-    box.setAttribute("position", {
-        x : 0,
-        y : 20,
-        z: 0
-    } );
-    const text = document.createElement("a-text");
+    const text = document.createElement("a-entity");
     const textScale = 100;
     text.setAttribute("look-at", "[gps-new-camera]");
     text.setAttribute("scale", {
