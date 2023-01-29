@@ -32,12 +32,12 @@ function createText(message){
         y : 2,
         z : 4 
     } );
-    entity.setAttribute("scale", {
+    text.setAttribute("scale", {
         x: 15, 
         y: 15,
         z: 15 
     });
-    entity.setAttribute('value', message);
+    text.setAttribute('value', message);
     document.querySelector("a-scene").appendChild(text);
 }
 
