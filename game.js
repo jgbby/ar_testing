@@ -33,9 +33,9 @@ function createText(message){
         z : 4 
     } );
     entity.setAttribute("scale", {
-        x: 5, 
-        y: 5,
-        z: 5 
+        x: 15, 
+        y: 15,
+        z: 15 
     });
     entity.setAttribute('value', message);
     document.querySelector("a-scene").appendChild(text);
