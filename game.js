@@ -15,15 +15,35 @@ window.onload = () => {
     // Retrieve list of latitude and longitude
     var entities = parseURL(window.location.search);
 
+    createBlock();
+    createText("Hello World!");
+
+    /*
     // Render all entities with random colors
     for (const entity of entities){
         let color_index = Math.floor(Math.random() * colors.length);
         createEntity(colors[color_index], entity.lat, entity.lon);
     }
+    */
 
-    createText("Hello World!");
 };
 
+function createBlock(){
+    // Add a box to the north of the initial GPS position
+    const entity = document.createElement("a-box");
+    entity.setAttribute("scale", {
+        x: 20, 
+        y: 20,
+        z: 20
+    });
+    entity.setAttribute("position", {
+        x: 3, 
+        y: 3,
+        z: 3 
+    });
+    entity.setAttribute('material', { color: color } );
+    document.querySelector("a-scene").appendChild(entity);   
+}
 
 function createText(message){
     const text = document.createElement("a-text");
