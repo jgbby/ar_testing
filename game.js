@@ -28,7 +28,7 @@ window.onload = () => {
 function createText(message){
     const text = document.createElement("a-text");
     text.setAttribute("position", {
-        x : 0,
+        x : 10,
         y : 0,  // 0 2 4 
         z : 0 
     });
