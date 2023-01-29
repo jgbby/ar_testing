@@ -1,29 +1,3 @@
-
-/*
-const params = window.location.search
-const urlParams = new URLSearchParams(params);
-
-const
-  keys = urlParams.keys(),
-  values = urlParams.values(),
-  entries = urlParams.entries();
-
-for (const key of keys) console.log(key);
-// product, color, newuser, size
-
-for (const value of values) console.log(value);
-// shirt, blue, , m
-
-for(const entry of entries) {
-    console.log(`${entry[0]}: ${entry[1]}`);
-}
-
-var list = [ 
-    {'color': 'blue', 'latitude': 41.826835, 'longitude': -71.399710},
-    {'color': 'green', 'latitude': 41.826835+0.001, 'longitude': -71.399710},
-]
-*/
-
 let colors = [
     'blue',
     'red',
@@ -38,8 +12,6 @@ let colors = [
 // When the A-Frame loads add the given entities specified in the URL
 window.onload = () => {
 
-    createLocalText("Welcome to ScavengerAR! This is an AR-based in-real-life scavenger hunt. The color of your screen tells you how hot or cold you are to the landmarks!")
-
     // Retrieve list of latitude and longitude
     var entities = parseURL(window.location.search);
 
@@ -48,7 +20,27 @@ window.onload = () => {
         let color_index = Math.floor(Math.random() * colors.length);
         createEntity(colors[color_index], entity.lat, entity.lon);
     }
+
+    createText("Hello World!");
 };
+
+
+function createText(message){
+    const text = document.createElement("a-text");
+    text.setAttribute('', { color: 'red' } );
+    text.setAttribute("position", {
+        x : 0,
+        y : 2,
+        z : 4 
+    } );
+    entity.setAttribute("scale", {
+        x: 5, 
+        y: 5,
+        z: 5 
+    });
+    entity.setAttribute('value', message);
+    document.querySelector("a-scene").appendChild(text);
+}
 
 /**
  * Parses the given URL into latitude and longitude pairs 
