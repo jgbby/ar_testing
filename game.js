@@ -41,7 +41,6 @@ function createComp(){
     text.setAttribute("value", "hello");
     text.setAttribute("align", "center");
 
-    document.querySelector("a-scene").appendChild(box);   
     document.querySelector("a-scene").appendChild(text);   
 
 }
