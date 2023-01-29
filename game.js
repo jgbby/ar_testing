@@ -38,7 +38,7 @@ function createComp(){
         y: textScale,
         z: textScale
     });
-    text.setAttribute("value", feature.properties.name);
+    text.setAttribute("value", "hello");
     text.setAttribute("align", "center");
 
     document.querySelector("a-scene").appendChild(box);   
